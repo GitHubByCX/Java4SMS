@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.j4.mapper.ConductMapper">
+  <resultMap id="BaseResultMap" type="com.j4.bean.Conduct">
+    <result column="Id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="cao_xing" jdbcType="INTEGER" property="caoXing" />
+    <result column="chi_dao" jdbcType="INTEGER" property="chiDao" />
+    <result column="kuang_ke" jdbcType="INTEGER" property="kuangKe" />
+    <result column="qing_jia" jdbcType="INTEGER" property="qingJia" />
+  </resultMap>
+  <insert id="insert" parameterType="com.j4.bean.Conduct">
+    insert into conduct (Id, user_id, cao_xing, 
+      chi_dao, kuang_ke, qing_jia
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{caoXing,jdbcType=INTEGER}, 
+      #{chiDao,jdbcType=INTEGER}, #{kuangKe,jdbcType=INTEGER}, #{qingJia,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.j4.bean.Conduct">
+    insert into conduct
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="caoXing != null">
+        cao_xing,
+      </if>
+      <if test="chiDao != null">
+        chi_dao,
+      </if>
+      <if test="kuangKe != null">
+        kuang_ke,
+      </if>
+      <if test="qingJia != null">
+        qing_jia,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="caoXing != null">
+        #{caoXing,jdbcType=INTEGER},
+      </if>
+      <if test="chiDao != null">
+        #{chiDao,jdbcType=INTEGER},
+      </if>
+      <if test="kuangKe != null">
+        #{kuangKe,jdbcType=INTEGER},
+      </if>
+      <if test="qingJia != null">
+        #{qingJia,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
